@@ -17,6 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from glycemic_index_app.views import *
+from django.urls import path, include
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('gi-webapp/', include('glycemic_index_app.urls')),
 ]
