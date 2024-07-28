@@ -14,11 +14,16 @@ class Note(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     glycemia = models.FloatField()
     bread_units = models.FloatField(blank=True)
-    glycemic_index = models.CharField(max_length=10)
+    glycemic_index = models.CharField(max_length=500)
     general_gi = models.FloatField()
     general_rcg = models.FloatField()
     graph = models.TextField()
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = 'Note'
+        verbose_name_plural = 'Notes'
+        ordering = ['-created_at']
 
 class Statistics(models.Model):
     average_glycemia = models.FloatField(blank=True)
