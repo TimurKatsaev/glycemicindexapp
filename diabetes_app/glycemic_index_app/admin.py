@@ -6,6 +6,12 @@ class NoteAdmin(admin.ModelAdmin):
     list_display_links = ('id', 'title')
     search_fields = ('title', 'content')
 
-admin.site.register(CustomUser)
+class StatisticsAdmin(admin.ModelAdmin):
+    list_display = ('id', 'average_glycemia', 'average_bu', 'average_gi', 'average_rcg')
+
+class CustomUserAdmin(admin.ModelAdmin):
+    list_display = ('id', 'username', 'email', 'is_superuser')
+
+admin.site.register(CustomUser, CustomUserAdmin)
 admin.site.register(Note, NoteAdmin)
-admin.site.register(Statistics)
+admin.site.register(Statistics, StatisticsAdmin)
