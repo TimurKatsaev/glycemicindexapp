@@ -1,0 +1,171 @@
+:active, :hover, :focus {
+    outline: 0;
+    outline-offset: 0;
+}
+
+/* .main-note input,
+.main-note textarea{
+    background-color: transparent;
+    border-radius: 0;
+    padding: 0px;
+    margin: 0px;
+    border: 0;
+    overflow: hidden;
+} */
+
+.main-note textarea{
+    margin-top: 20px;
+    width: 100%;
+    resize: none;
+}
+
+.main-title{
+    margin-left: 0px;
+}
+
+.main-desc{
+    margin-top: 30px;
+}
+
+.main-note{
+    margin-top: 24px;
+}
+
+.main-note-title{
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.note-date{
+    opacity: .8;
+    margin-top: 10px;
+}
+
+.note-flex{
+    display: flex;
+    margin-top: 30px;
+}
+
+.note-glycemia{
+    margin-right: 25px;
+}
+
+.note-GI{
+    margin-top: 27px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid var(--color-bg-400);
+}
+
+.note-GI h3{
+    font-size: 14px;
+    opacity: .8;
+}
+
+.note-GI-list{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.note-GI-item{
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.note-GI-item-el{
+    width: fit-content;
+    font-size: 14px;
+    padding: 5px;
+    background-color: var(--color-bg-100);
+    border-radius: 5px;
+}
+
+.minus-button{
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    margin-left: 10px;
+    background-color: transparent;
+    border: 0;
+    background-image: url('../media/minus.svg');
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position: center;
+}
+
+.minus-button:hover{
+    background-color: transparent;
+    fill: #BCBCBC;
+}
+
+.note-GI-item:hover{
+    cursor: pointer;
+}
+
+.note-add-button{
+    border: none;
+    max-width: 20px;
+    max-height: 20px;
+    padding: 0;
+    margin-left: 15px;
+}
+
+.note-add-button:hover{
+    background-color: transparent;
+}
+
+/* Conclusion */
+
+.conclusion-line{
+    display: flex;
+    margin: 8px 0;
+}
+
+.conclusion-line:first-child{
+    margin-top: 30px;
+}
+
+.conclusion-title{
+    font-weight: bold;
+    margin-right: 30px;
+}
+
+#curve_chart{
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    margin-top: 35px;
+}
+
+.note-button{
+    margin-top: 30px;
+}
+
+.note-GI-title{
+    display: flex;
+    align-items: center;
+}
+
+@media (max-width:425px) {
+    body{
+        font-size: 12px;
+    }
+    .main-note h1{
+        font-size: 18px;
+    }
+    .note-GI h3{
+        font-size: 12px;
+    }
+    .main-desc{
+        margin-top: 15px;
+    }
+    .note-flex{
+        margin-top: 15px;
+    }
+    .note-GI{
+        margin-top: 18px;
+        padding-bottom: 15px;
+    }
+}

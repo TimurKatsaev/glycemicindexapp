@@ -1,12 +1,15 @@
+{% load static %}
+{% load sidebar_active %}
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }}</title>
-    <link rel="stylesheet" href="main.css">
-    <link rel="stylesheet" href="../default.css">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'glycemic_index_app/css/default.css' %}">
+    {% block link %}
+    {% endblock %}
     <script src="https://kit.fontawesome.com/c8ea1a53b8.js" crossorigin="anonymous"></script>
 </head>
 
@@ -16,13 +19,13 @@
             <div class="header-inner">
                 <span class="header-name">Кацаев Т.</span>
                 <button id="exit">Выйти</button>
-                <a href="../Login page/login.html" id="enter">Войти</a>
+                <a href="{% url 'glycemic_index_app:login' %}" id="enter">Войти</a>
             </div>
         </div>
     </header>
     <section class="sidebar" id="sidebar">
         <div class="logo-wrapper">
-            <a href="../Main page/main.html" class="logo">Glycemic index.</a>
+            <a href="{% url 'glycemic_index_app:main' %}" class="logo">Glycemic index.</a>
             <button class="menu-button">
                 <svg width="12px" height="auto" viewBox="0 0 153 175" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -52,8 +55,8 @@
         <div class="funcs">
             <span class="side-title">Функции</span>
             <ul>
-                <li class="side-item">
-                    <a href="../Add page/add.html" class="side-item-text">
+                <li class="side-item {% is_active 'add' name %}">
+                    <a href="{% url 'glycemic_index_app:add' %}" class="side-item-text">
                         <svg width="12" height="14" viewBox="0 0 12 14" fill="none" xmlns="http://www.w3.org/2000/svg"
                             class="side-icons">
                             <path
@@ -62,8 +65,8 @@
                         <span>Добавить запись</span>
                     </a>
                 </li>
-                <li class="side-item active">
-                    <a href="../Main page/main.html" class="side-item-text">
+                <li class="side-item {% is_active 'main' name %}">
+                    <a href="{% url 'glycemic_index_app:main' %}" class="side-item-text">
                         <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"
                             class="side-icons">
                             <path
@@ -72,8 +75,8 @@
                         <span>Общий список</span>
                     </a>
                 </li>
-                <li class="side-item">
-                    <a href="../Stat Page/stat.html" class="side-item-text">
+                <li class="side-item {% is_active 'stat' name %}">
+                    <a href="{% url 'glycemic_index_app:stat' %}" class="side-item-text">
                         <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"
                             class="side-icons">
                             <g clip-path="url(#clip0_4_52)">
@@ -90,7 +93,7 @@
                     </a>
                 </li>
             </ul>
-        </div>
+            </div>
         <div class="sets">
             <span class="side-title">Настройки</span>
             <ul>
@@ -113,7 +116,7 @@
                     <label for="theme" class="theme-button"></label>
                 </li>
                 <li class="side-item">
-                    <a href="../PersonalData page/personalData.html" class="side-item-text">
+                    <a href="{% url 'glycemic_index_app:personal_data' %}" class="side-item-text">
                         <svg width="12" height="14" viewBox="0 0 12 14" fill="none" xmlns="http://www.w3.org/2000/svg"
                             class="side-icons">
                             <g clip-path="url(#clip0_4_108)">
@@ -130,7 +133,7 @@
                     </a>
                 </li>
                 <li class="side-item">
-                    <a href="../Settings page/settings.html" class="side-item-text">
+                    <a href="{% url 'glycemic_index_app:setts' %}" class="side-item-text">
                         <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"
                             class="side-icons">
                             <g clip-path="url(#clip0_4_110)">
@@ -150,27 +153,12 @@
         </div>
     </section>
     <main class="main">
-        <div class="main-list">
-            {% for item in notes %}
-                <div class="card">
-                    <h1>{{ item.title }}</h1>
-                    <div class="card-date-list">
-                        <span class="card-date">{{ item.created_at }}</span>
-                    </div>
-                    <p>{{ item.content }}</p>
-                    <div class="card-info-list">
-                        <div class="card-info-list__item">Гликемия: {{ item.glycemia }}</div>
-                        <div class="card-info-list__item">Общий ГИ: {{ item.general_gi }}</div>
-                        <div class="card-info-list__item">Общий СИГ: {{ item.general_rcg }}</div>
-                    </div>
-                    <a href="../Note page/note.html">Подробнее</a>
-                </div>           
-            {% endfor %}
-        </div>
+        {% block main %}
+        {% endblock %}
     </main>
-    <script src="../switchstyle.js"></script>
-    <script src="../sidebar.js"></script>
-    <script src="../logIn.js"></script>
+    <script src="{% static 'glycemic_index_app/javaScript/switchstyle.js' %}"></script>
+    <script src="{% static 'glycemic_index_app/javaScript/sidebar.js' %}"></script>
+    <script src="{% static 'glycemic_index_app/javaScript/login.js' %}"></script>
 </body>
 
 </html>

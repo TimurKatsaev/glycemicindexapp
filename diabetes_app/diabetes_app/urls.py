@@ -22,9 +22,11 @@ from django.conf.urls.static import static
 from glycemic_index_app.views import *
 from django.urls import path, include
 
+app_name = 'glycemic_index_app'
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('gi-webapp/', include('glycemic_index_app.urls')),
+    path('gi-webapp/', include(('glycemic_index_app.urls', 'glycemic_index_app'), namespace="glycemic_index_app")),
 ]
 
 if settings.DEBUG:
