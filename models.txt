@@ -1,0 +1,28 @@
+/// Note
+id - int
+title - Varchar
+content - Text
+created_at - DateTime
+glycemia - FloatField
+bu - FloatField #bread units
+gi - Varchar
+general_gi - FloatField
+general_rcg - FloatField #The rate of change in glycemia
+graph - Text
+
+/// Users data
+username - Varchar
+email - EmailFiled
+password - Varchar
+rcg - Text
+absorption_time - Text #The time of absorption of products
+
+// Statics
+average_glycemia - FloatField
+average_bu - FloatField
+average_gi - FloatField
+average_rcg - FloatField
+graph_glycemia - Text
+graph_bu - Text
+graph_gi - Text
+graph_rcg - Text

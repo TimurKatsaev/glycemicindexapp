@@ -1,0 +1,132 @@
+{% extends '../base.html' %}
+{% load static %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block link %}
+<link rel="stylesheet" href="{% static 'glycemic_index_app/css/personalData.css' %}">
+{% endblock %}
+
+{% block main %}
+    <div class="main-inner">
+    <div class="main-wrapper">
+        <span class="main-title">Личные данные</span>
+        <h1 class="main-inner-title">Перевод ГИ в СИГ</h1>
+        <form action="#" class="personal-data-form">
+            <div class="form-item">
+                <h3>Гликемический индекс 10</h3>
+                <div class="form-input">
+                    <span class="form-title">СИГ при ГИ 10:</span>
+                    <input type="text" placeholder="ммоль/л/мин" id="form-name">
+                </div>
+                <div class="form-input">
+                    <span class="form-title">Время всасывания:</span>
+                    <input type="text" placeholder="минуты" id="form-name">
+                </div>
+            </div>
+            <div class="form-item">
+                <h3>Гликемический индекс 20</h3>
+                <div class="form-input">
+                    <span class="form-title">СИГ при ГИ 20:</span>
+                    <input type="text" placeholder="ммоль/л/мин" id="form-name">
+                </div>
+                <div class="form-input">
+                    <span class="form-title">Время всасывания:</span>
+                    <input type="text" placeholder="минуты" id="form-name">
+                </div>
+            </div>
+            <div class="form-item">
+                <h3>Гликемический индекс 30</h3>
+                <div class="form-input">
+                    <span class="form-title">СИГ при ГИ 30:</span>
+                    <input type="text" placeholder="ммоль/л/мин" id="form-name">
+                </div>
+                <div class="form-input">
+                    <span class="form-title">Время всасывания:</span>
+                    <input type="text" placeholder="минуты" id="form-name">
+                </div>
+            </div>
+            <div class="form-item">
+                <h3>Гликемический индекс 40</h3>
+                <div class="form-input">
+                    <span class="form-title">СИГ при ГИ 40:</span>
+                    <input type="text" placeholder="ммоль/л/мин" id="form-name">
+                </div>
+                <div class="form-input">
+                    <span class="form-title">Время всасывания:</span>
+                    <input type="text" placeholder="минуты" id="form-name">
+                </div>
+            </div>
+            <div class="form-item">
+                <h3>Гликемический индекс 50</h3>
+                <div class="form-input">
+                    <span class="form-title">СИГ при ГИ 50:</span>
+                    <input type="text" placeholder="ммоль/л/мин" id="form-name">
+                </div>
+                <div class="form-input">
+                    <span class="form-title">Время всасывания:</span>
+                    <input type="text" placeholder="минуты" id="form-name">
+                </div>
+            </div>
+            <div class="form-item">
+                <h3>Гликемический индекс 60</h3>
+                <div class="form-input">
+                    <span class="form-title">СИГ при ГИ 60:</span>
+                    <input type="text" placeholder="ммоль/л/мин" id="form-name">
+                </div>
+                <div class="form-input">
+                    <span class="form-title">Время всасывания:</span>
+                    <input type="text" placeholder="минуты" id="form-name">
+                </div>
+            </div>
+            <div class="form-item">
+                <h3>Гликемический индекс 70</h3>
+                <div class="form-input">
+                    <span class="form-title">СИГ при ГИ 70:</span>
+                    <input type="text" placeholder="ммоль/л/мин" id="form-name">
+                </div>
+                <div class="form-input">
+                    <span class="form-title">Время всасывания:</span>
+                    <input type="text" placeholder="минуты" id="form-name">
+                </div>
+            </div>
+            <div class="form-item">
+                <h3>Гликемический индекс 80</h3>
+                <div class="form-input">
+                    <span class="form-title">СИГ при ГИ 80:</span>
+                    <input type="text" placeholder="ммоль/л/мин" id="form-name">
+                </div>
+                <div class="form-input">
+                    <span class="form-title">Время всасывания:</span>
+                    <input type="text" placeholder="минуты" id="form-name">
+                </div>
+            </div>
+            <div class="form-item">
+                <h3>Гликемический индекс 90</h3>
+                <div class="form-input">
+                    <span class="form-title">СИГ при ГИ 90:</span>
+                    <input type="text" placeholder="ммоль/л/мин" id="form-name">
+                </div>
+                <div class="form-input">
+                    <span class="form-title">Время всасывания:</span>
+                    <input type="text" placeholder="минуты" id="form-name">
+                </div>
+            </div>
+            <div class="form-item">
+                <h3>Гликемический индекс 100</h3>
+                <div class="form-input">
+                    <span class="form-title">СИГ при ГИ 100:</span>
+                    <input type="text" placeholder="ммоль/л/мин" id="form-name">
+                </div>
+                <div class="form-input">
+                    <span class="form-title">Время всасывания:</span>
+                    <input type="text" placeholder="минуты" id="form-name">
+                </div>
+            </div>
+            <button class="form-button" type="submit">Добавить</button>
+        </form>
+    </div>
+    </div>
+{% endblock %}

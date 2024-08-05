@@ -93,7 +93,7 @@
                     </a>
                 </li>
             </ul>
-            </div>
+        </div>
         <div class="sets">
             <span class="side-title">Настройки</span>
             <ul>
@@ -115,7 +115,7 @@
                     <input type="checkbox" id="theme" class="theme-toggle">
                     <label for="theme" class="theme-button"></label>
                 </li>
-                <li class="side-item">
+                <li class="side-item {% is_active 'personal_data' name %}">
                     <a href="{% url 'glycemic_index_app:personal_data' %}" class="side-item-text">
                         <svg width="12" height="14" viewBox="0 0 12 14" fill="none" xmlns="http://www.w3.org/2000/svg"
                             class="side-icons">
@@ -132,7 +132,7 @@
                         <span>Личные данные</span>
                     </a>
                 </li>
-                <li class="side-item">
+                <li class="side-item {% is_active 'settings' name %}">
                     <a href="{% url 'glycemic_index_app:setts' %}" class="side-item-text">
                         <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"
                             class="side-icons">
@@ -156,9 +156,13 @@
         {% block main %}
         {% endblock %}
     </main>
-    <script src="{% static 'glycemic_index_app/javaScript/switchstyle.js' %}"></script>
+    {% if title != 'Статистика' %}
+        <script src="{% static 'glycemic_index_app/javaScript/switchstyle.js' %}"></script>
+    {% endif %}
     <script src="{% static 'glycemic_index_app/javaScript/sidebar.js' %}"></script>
     <script src="{% static 'glycemic_index_app/javaScript/login.js' %}"></script>
+    {% block scripts %}
+    {% endblock %}
 </body>
 
 </html>

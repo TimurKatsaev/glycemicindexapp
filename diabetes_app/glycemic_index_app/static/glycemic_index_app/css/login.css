@@ -9,7 +9,7 @@ body{
 .extra-info{
     width: 100vh;
     height: 100vh;
-    background-image: url(./media/Extra-info.png);
+    background-image: url('../img/Extra-info.png');
     background-repeat: no-repeat;
     background-size:cover;
     background-position: center;

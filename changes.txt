@@ -1,0 +1,3 @@
+Changed path to static folder
+Added all html tampletes
+Fixed a bug on stat page

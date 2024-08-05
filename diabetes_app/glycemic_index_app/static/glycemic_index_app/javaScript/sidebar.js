@@ -40,7 +40,6 @@ const disableNavMobile = () => {
 }
 
 function checkWidth() {
-    console.log(window.innerWidth);
     if (window.innerWidth <= 768) { // Здесь указываем нужную ширину экрана в пикселях
         enableNavActive();
         enableNavMobile();

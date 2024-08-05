@@ -2,8 +2,6 @@ let styleMode = localStorage.getItem('styleMode');
 const styleToggle = document.querySelector('.theme-toggle');
 const button = document.querySelector('#theme');
 
-console.log('Hello world!')
-
 const enableDarkStyle = () => {
     document.body.classList.add('darkstyle');
     button.classList.add('active')
