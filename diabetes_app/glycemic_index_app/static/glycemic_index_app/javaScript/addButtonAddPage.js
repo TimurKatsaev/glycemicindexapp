@@ -7,6 +7,7 @@ function addFn() {
     iFeild.setAttribute("type", "text");
     iFeild.setAttribute("placeholder", "Число от 1 до 100");
     iFeild.classList.add("form-GI");
+    iFeild.setAttribute("name", "form-GI");
 
     button.classList.add("minus-button");
     button.setAttribute("onclick", "delNode(this)");
