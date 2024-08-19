@@ -156,7 +156,7 @@
         {% block main %}
         {% endblock %}
     </main>
-    {% if title != 'Статистика' %}
+    {% if title != 'Статистика' and title != 'Запись' %}
         <script src="{% static 'glycemic_index_app/javaScript/switchstyle.js' %}"></script>
     {% endif %}
     <script src="{% static 'glycemic_index_app/javaScript/sidebar.js' %}"></script>

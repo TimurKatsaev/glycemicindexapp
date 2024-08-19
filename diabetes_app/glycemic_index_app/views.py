@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 
 from .models import CustomUser, Note, Statistics
 
@@ -7,6 +7,11 @@ def index(request):
     notes = Note.objects.all()
     context = {'notes': notes, 'title': 'Список записей', 'name': 'main'}
     return render(request, 'glycemic_index_app/components/main.html', context=context)
+
+def detail(request, pk):
+    notes = get_object_or_404(Note, pk=pk)
+    context = {'notes': notes, 'title': 'Запись', 'name': 'detail'}
+    return render(request, 'glycemic_index_app/components/detail.html', context=context)
 
 def add(request):
     context = {'title': 'Добавить запись', 'name': 'add'}

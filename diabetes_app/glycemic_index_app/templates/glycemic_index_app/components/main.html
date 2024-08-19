@@ -23,7 +23,7 @@
                     <div class="card-info-list__item">Общий ГИ: {{ item.general_gi }}</div>
                     <div class="card-info-list__item">Общий СИГ: {{ item.general_rcg }}</div>
                 </div>
-                <a href="">Подробнее</a>
+                <a href="{% url 'glycemic_index_app:note_detail' item.pk %}">Подробнее</a>
             </div>           
         {% endfor %}
     </div>
