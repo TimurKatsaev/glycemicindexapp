@@ -10,7 +10,7 @@ def index(request):
 
 def detail(request, pk):
     notes = get_object_or_404(Note, pk=pk)
-    context = {'notes': notes, 'title': 'Запись', 'name': 'detail'}
+    context = {'notes': notes, 'list': notes.glycemic_index.split(","), 'title': 'Запись', 'name': 'detail'}
     return render(request, 'glycemic_index_app/components/detail.html', context=context)
 
 def add(request):

@@ -17,7 +17,7 @@
                 <div class="card-date-list">
                     <span class="card-date">{{ item.created_at }}</span>
                 </div>
-                <p>{{ item.content }}</p>
+                <p>{{ item.content|slice:":100" }}{% if item.content|length > 100 %}...{% endif %}</p>
                 <div class="card-info-list">
                     <div class="card-info-list__item">Гликемия: {{ item.glycemia }}</div>
                     <div class="card-info-list__item">Общий ГИ: {{ item.general_gi }}</div>

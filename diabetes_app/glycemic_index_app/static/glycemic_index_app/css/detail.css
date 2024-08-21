@@ -1,4 +1,6 @@
-:active, :hover, :focus {
+:active,
+:hover,
+:focus {
     outline: 0;
     outline-offset: 0;
 }
@@ -13,98 +15,125 @@
     overflow: hidden;
 } */
 
-.main-note textarea{
+textarea {
+    resize: none;
+    /* Убирает возможность изменения размера вручную */
+    overflow: hidden;
+    /* Скрывает прокрутку */
+}
+
+.detail-input {
+    background-color: transparent;
+    border: 0px;
+    padding: 0;
+    margin: 0;
+}
+
+.detail-glycemia {
+    font-size: 14px;
+}
+
+.title-input {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.main-note textarea {
     margin-top: 20px;
     width: 100%;
     resize: none;
 }
 
-.main-title{
+.main-title {
     margin-left: 0px;
 }
 
-.main-desc{
+.main-desc {
+    font-size: 14px;
+    min-height: 80px;
     margin-top: 30px;
 }
 
-.main-note{
+.main-note {
     margin-top: 24px;
 }
 
-.main-note-title{
+.main-note-title {
     font-size: 24px;
     font-weight: bold;
 }
 
-.note-date{
+.note-date {
     opacity: .8;
     margin-top: 10px;
 }
 
-.note-flex{
+.note-flex {
     display: flex;
     margin-top: 30px;
 }
 
-.note-glycemia{
+.note-glycemia {
     margin-right: 25px;
 }
 
-.note-GI{
+.note-GI {
     margin-top: 27px;
     padding-bottom: 30px;
     border-bottom: 1px solid var(--color-bg-400);
 }
 
-.note-GI h3{
+.note-GI h3 {
     font-size: 14px;
     opacity: .8;
 }
 
-.note-GI-list{
+.note-GI-list {
     display: flex;
     flex-direction: column;
     align-items: start;
 }
 
-.note-GI-item{
+.note-GI-item {
     display: flex;
     align-items: center;
     font-size: 14px;
     margin-top: 10px;
 }
 
-.note-GI-item-el{
+.note-GI-item-el {
     width: fit-content;
     font-size: 14px;
     padding: 5px;
-    background-color: var(--color-bg-100);
+    background-color: var(--color-input);
+    padding: 10px;
+    max-width: 50px;
     border-radius: 5px;
 }
 
-.minus-button{
+.minus-button {
     width: 20px;
     height: 20px;
     padding: 0;
     margin-left: 10px;
     background-color: transparent;
     border: 0;
-    background-image: url('../media/minus.svg');
+    background-image: url('../img/minus.svg');
     background-repeat: no-repeat;
-    background-size:cover;
+    background-size: cover;
     background-position: center;
 }
 
-.minus-button:hover{
+.minus-button:hover {
     background-color: transparent;
     fill: #BCBCBC;
 }
 
-.note-GI-item:hover{
+.note-GI-item:hover {
     cursor: pointer;
 }
 
-.note-add-button{
+.note-add-button {
     border: none;
     max-width: 20px;
     max-height: 20px;
@@ -112,59 +141,64 @@
     margin-left: 15px;
 }
 
-.note-add-button:hover{
+.note-add-button:hover {
     background-color: transparent;
 }
 
 /* Conclusion */
 
-.conclusion-line{
+.conclusion-line {
     display: flex;
     margin: 8px 0;
 }
 
-.conclusion-line:first-child{
+.conclusion-line:first-child {
     margin-top: 30px;
 }
 
-.conclusion-title{
+.conclusion-title {
     font-weight: bold;
     margin-right: 30px;
 }
 
-#curve_chart{
+#curve_chart {
     width: 100%;
     height: auto;
     margin: 0 auto;
     margin-top: 35px;
 }
 
-.note-button{
+.note-button {
     margin-top: 30px;
 }
 
-.note-GI-title{
+.note-GI-title {
     display: flex;
     align-items: center;
 }
 
 @media (max-width:425px) {
-    body{
+    body {
         font-size: 12px;
     }
-    .main-note h1{
+
+    .main-note h1 {
         font-size: 18px;
     }
-    .note-GI h3{
+
+    .note-GI h3 {
         font-size: 12px;
     }
-    .main-desc{
+
+    .main-desc {
         margin-top: 15px;
     }
-    .note-flex{
+
+    .note-flex {
         margin-top: 15px;
     }
-    .note-GI{
+
+    .note-GI {
         margin-top: 18px;
         padding-bottom: 15px;
     }

@@ -16,4 +16,15 @@ function addFn() {
     divEle.appendChild(wrapper);
 }
 
+// Получаем элемент textarea
+const textarea = document.querySelector('textarea');
+
+textarea.addEventListener('input', function() {
+    this.style.height = 'auto'; // Сбрасывает высоту на "auto" для корректного расчета
+    this.style.height = this.scrollHeight + 'px'; // Устанавливает высоту равной scrollHeight
+});
+
+// Инициализация начальной высоты, если есть предустановленный текст
+textarea.style.height = textarea.scrollHeight + 'px';
+
 function delNode(el) { el.parentNode.remove() }
