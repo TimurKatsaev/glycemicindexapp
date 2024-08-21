@@ -94,14 +94,14 @@ textarea {
     align-items: start;
 }
 
-.note-GI-item {
+.form-GI-wrapper {
     display: flex;
     align-items: center;
     font-size: 14px;
     margin-top: 10px;
 }
 
-.note-GI-item-el {
+.form-GI {
     width: fit-content;
     font-size: 14px;
     padding: 5px;
@@ -129,7 +129,7 @@ textarea {
     fill: #BCBCBC;
 }
 
-.note-GI-item:hover {
+.form-GI-wrapper:hover {
     cursor: pointer;
 }
 

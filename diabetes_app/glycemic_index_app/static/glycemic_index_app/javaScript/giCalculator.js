@@ -18,7 +18,6 @@ form.addEventListener('submit', function (event) {
     document.getElementById('avg-gi').value = avg;
     document.getElementById('avg-rcg').value = avg / 1000;
     document.getElementById('actual-gi').value = giInputList;
-    alert(giInputList)
 
     // После вычислений отправляем форму вручную
     form.submit(); // Отправляем форму
