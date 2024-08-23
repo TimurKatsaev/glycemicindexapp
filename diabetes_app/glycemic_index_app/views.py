@@ -3,6 +3,20 @@ from django.shortcuts import get_object_or_404, render
 
 from .models import CustomUser, Note, Statistics
 
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from .serializers import NoteSerializer
+
+class NoteModelListView(APIView):
+    def get(self, request, pk):
+        try:
+            item = Note.objects.get(pk=pk)
+            serializer = NoteSerializer(item)
+            return Response(serializer.data)
+        except Note.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
 def index(request):
     notes = Note.objects.all()
     context = {'notes': notes, 'title': 'Список записей', 'name': 'main'}

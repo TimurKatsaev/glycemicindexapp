@@ -4,20 +4,36 @@ google.charts.setOnLoadCallback(drawChart);
 let styleMode = localStorage.getItem('styleMode');
 const styleToggle = document.querySelector('.theme-toggle');
 const button = document.querySelector('#theme');
-
+const url = window.location.href;
+const id = url[url.length-2]
 const statItems = document.getElementsByClassName('main-item');
+let arr = []
 
+function createNestedList(str) {
+  // Разбиваем строку на верхний уровень по "|"
+  let topLevelItems = str.split('|');
+  let nestedList = topLevelItems.map(item => {
+      // Разбиваем каждый элемент верхнего уровня по ","
+      let subItems = item.split(',');
+      // Очищаем пробелы
+      return subItems.map(subItem => parseFloat(subItem.trim()));
+  });
+  return nestedList;
+}
+
+fetch('/api/notemodel/' + id + '/')
+  .then(response => response.json())
+  .then(data => {
+    arr = createNestedList(data.graph)
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+
+  
 function drawChart() {
-    var data = google.visualization.arrayToDataTable([
-        ['Day', 'Glycemia'],
-        ['1', 6.5,],
-        ['2', 7.3,],
-        ['3', 8.9,],
-        ['4', 4.5,],
-        ['5', 8.3,],
-        ['6', 9.3,],
-        ['7', 10.3,],
-    ]);
+  arr.unshift(['Day', 'Glycemia'])
+  var data = google.visualization.arrayToDataTable(arr);
 
   var options = getOptions(styleMode);
 
@@ -90,7 +106,7 @@ function getOptions(styleMode) {
   }
 }
 
-function itemClick(item){
+function itemClick(item) {
   for (let i = 0; i < statItems.length; i++) {
     statItems[i].classList.remove('active');
   }
