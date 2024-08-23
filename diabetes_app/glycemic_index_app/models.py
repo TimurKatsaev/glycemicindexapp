@@ -4,6 +4,7 @@ from django.contrib.auth.models import AbstractUser
 class CustomUser(AbstractUser):
     rcg = models.TextField(blank=True)
     absorption_time = models.TextField(blank=True)
+    bu_index = models.TextField(blank=True)
 
     def __str__(self):
         return self.username

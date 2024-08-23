@@ -17,9 +17,12 @@
     <header class="header">
         <div class="header-countainer">
             <div class="header-inner">
-                <span class="header-name">Кацаев Т.</span>
-                <button id="exit">Выйти</button>
-                <a href="{% url 'glycemic_index_app:login' %}" id="enter">Войти</a>
+                {% if user.is_authenticated %}
+                    <span class="header-name">{{ user.username }}</span>
+                    <a href="{% url 'glycemic_index_app:logout' %}" class="account_button">Выйти</a>
+                {% else %}
+                    <a href="{% url 'glycemic_index_app:login' %}" class="account_button">Войти</a>
+                {% endif %}
             </div>
         </div>
     </header>
@@ -160,7 +163,6 @@
         <script src="{% static 'glycemic_index_app/javaScript/switchstyle.js' %}"></script>
     {% endif %}
     <script src="{% static 'glycemic_index_app/javaScript/sidebar.js' %}"></script>
-    <script src="{% static 'glycemic_index_app/javaScript/login.js' %}"></script>
     {% block scripts %}
     {% endblock %}
 </body>

@@ -74,6 +74,10 @@ TEMPLATES = [
 
 AUTH_USER_MODEL = 'glycemic_index_app.CustomUser'
 
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]
+
 WSGI_APPLICATION = 'diabetes_app.wsgi.application'
 
 

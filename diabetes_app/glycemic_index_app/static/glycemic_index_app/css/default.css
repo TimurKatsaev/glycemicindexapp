@@ -117,13 +117,7 @@ button:hover {
     grid-area: header;
 }
 
-/* Not loged in */
-
-.header-name{
-    display: none;
-}
-
-#enter{
+.account_button{
     display: block;
     color: var(--color-text);
     font-weight: bold;
@@ -136,28 +130,12 @@ button:hover {
     transition: all linear .1s;
 }
 
-#enter:hover {
+.account_button:hover {
     color: var(--color-body);
     background-color: var(--color-button);
 }
 
-#exit{
-    display: none;
-}
-
 /* Loged in */
-
-.header.active .header-name{
-    display: block;
-}
-
-.header.active #exit{
-    display: block;
-}
-
-.header.active #enter{
-    display: none;
-}
 
 .header-countainer {
     padding: 0 105px;

@@ -1,3 +1,4 @@
+from pyexpat.errors import messages
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render
 
@@ -7,6 +8,11 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from .serializers import NoteSerializer
+from django.contrib.auth.decorators import login_required
+
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import login, authenticate, logout
+from django.shortcuts import render, redirect
 
 class NoteModelListView(APIView):
     def get(self, request, pk):
@@ -35,9 +41,23 @@ def stat(request):
     context = {'title': 'Статистика', 'name': 'stat'}
     return render(request, 'glycemic_index_app/components/stat.html', context=context)
 
-def login(request):
-    context = {'title': 'Вход', 'name': 'login'}
+def login_view(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            user = authenticate(request, username=request.POST["username"],
+                            password=request.POST["password"])
+            if user is not None:
+                login(request, user)
+                return redirect('glycemic_index_app:main')
+    else:
+        form = AuthenticationForm()
+    context = {'title': 'Вход', 'name': 'login', 'form': form}
     return render(request, 'glycemic_index_app/components/login.html', context=context)
+
+def logout_view(request):
+    logout(request)
+    return redirect('glycemic_index_app:main')
 
 def personal_data(request):
     context = {'title': 'Личные данные', 'name': 'personal_data'}
