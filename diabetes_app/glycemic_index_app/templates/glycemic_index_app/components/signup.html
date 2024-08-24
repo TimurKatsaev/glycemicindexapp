@@ -16,12 +16,14 @@
         <div class="extra-info">
         </div>
         <div class="signup-form">
-            <form class="signup-form-inner">
+            <form class="signup-form-inner" method="post">
+                {% csrf_token %}
                 <input type="checkbox" id="theme" class="theme-toggle">
                 <!-- <label for="theme" class="theme-button"></label> -->
                 <a href="javascript:history.back()" class="back-link">Назад</a>
                 <h1>Создать аккаунт</h1>
-                <div class="form-input name">
+                {{ form.as_p }}
+                <!-- <div class="form-input name">
                     <div class="form-title">Имя пользователя</div>
                     <input type="text" placeholder="Ваше имя пользователя">
                 </div>
@@ -32,8 +34,8 @@
                 <div class="form-input flex">
                     <div class="form-title">Пароль</div>
                     <input type="text" placeholder="Ваш пароль">
-                </div>
-                <button class="form-button">Добавить</button>
+                </div> -->
+                <button class="form-button" type="submit">Добавить</button>
                 <p class="form-link">Уже есть аккаунт? <a href="{% url 'glycemic_index_app:login' %}">Войти</a></p>
             </form>
         </div>

@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render
 
 from .models import CustomUser, Note, Statistics
+from .forms import SignUpForm
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -68,5 +69,21 @@ def setts(request):
     return render(request, 'glycemic_index_app/components/settings.html', context=context)
 
 def signup(request):
-    context = {'title': 'Регистрация', 'name': 'signup'}
+    print(request.method)
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            user.refresh_from_db()  # Обновляем экземпляр пользователя с помощью данных из формы
+            user.save()
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=user.username, password=raw_password)
+            login(request, user)
+            return redirect('glycemic_index_app:main')
+        else:
+            for field in form:
+                print("Field Error:", field.name,  field.errors)
+    else:
+        form = SignUpForm()
+    context = {'title': 'Регистрация', 'name': 'signup', 'form': form}
     return render(request, 'glycemic_index_app/components/signup.html', context=context)

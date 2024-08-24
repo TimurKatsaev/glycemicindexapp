@@ -16,17 +16,17 @@
         <div class="extra-info">
         </div>
         <div class="signup-form">
-            {% if form.non_field_errors %}
-                <div class="errors">
-                    {{ form.non_field_errors }}
-                </div>
-            {% endif %}
             <form class="signup-form-inner" method="post" action="{% url 'glycemic_index_app:login' %}">
                 {% csrf_token %}
                 <input type="checkbox" id="theme" class="theme-toggle">
                 <!-- <label for="theme" class="theme-button"></label> -->
                 <a href="javascript:history.back()" class="back-link">Назад</a>
                 <h1>Войти</h1>
+                {% if form.non_field_errors %}
+                    <div class="errors">
+                        {{ form.non_field_errors }}
+                    </div>
+                {% endif %}
                 <div class="form-input flex">
                     <div>Email</div>
                     <input type="text" name="username" placeholder="Ваш логин">

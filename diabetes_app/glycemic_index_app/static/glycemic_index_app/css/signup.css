@@ -22,6 +22,20 @@ body{
     padding-top: 120px;
 }
 
+p{
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+}
+
+.helptext{
+    margin-top: 5px;
+}
+
+.errorlist li{
+    color: #dd473b;
+}
+
 .form-input{
     margin-top: 30px;
 }

@@ -126,13 +126,29 @@ button:hover {
     background: transparent;
     padding: 8px 15px;
     cursor: pointer;
+    margin-right: 10px;
 
     transition: all linear .1s;
+}
+
+
+.account_button:last-child{
+    margin-right: 0;
 }
 
 .account_button:hover {
     color: var(--color-body);
     background-color: var(--color-button);
+}
+
+.account_button.login{
+    color: var(--color-body);
+    background-color: var(--color-button);
+}
+
+.account_button.login:hover{
+    color: var(--color-text);
+    background: transparent;
 }
 
 /* Loged in */

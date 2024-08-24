@@ -15,6 +15,11 @@ body{
     background-position: center;
 }
 
+.errors{
+    color: #dd473b;
+    margin: 10px 0;
+}
+
 .signup-form-inner{
     max-width: 500px;
     margin: 0 auto;

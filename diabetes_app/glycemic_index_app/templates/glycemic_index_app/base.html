@@ -21,7 +21,8 @@
                     <span class="header-name">{{ user.username }}</span>
                     <a href="{% url 'glycemic_index_app:logout' %}" class="account_button">Выйти</a>
                 {% else %}
-                    <a href="{% url 'glycemic_index_app:login' %}" class="account_button">Войти</a>
+                <a href="{% url 'glycemic_index_app:signup' %}" class="account_button">Создать аккаунт</a>
+                    <a href="{% url 'glycemic_index_app:login' %}" class="account_button login">Войти</a>
                 {% endif %}
             </div>
         </div>
