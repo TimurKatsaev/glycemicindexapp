@@ -16,20 +16,20 @@
     <form action="" id="add-form">
         <div class="form-item">
             <span class="form-title">Название*</span>
-            <input type="text" placeholder="Название записи" id="form-name" name="title">
+            <input required type="text" placeholder="Название записи" id="form-name" name="title">
         </div>
         <div class="form-item">
             <span class="form-title">Описание*</span>
-            <textarea type="text" placeholder="Описание" id="form-desc" name="desc"></textarea>
+            <textarea required type="text" placeholder="Описание" id="form-desc" name="desc"></textarea>
         </div>
         <div class="form-flex">
             <div class="form-item glycemia">
-                <span class="form-title">Гликемия (сахар в крови)</span>
-                <input type="text" placeholder="Ммоль/л" id="form-clycemia" name="glycemia">
+                <span class="form-title">Гликемия (сахар в крови)*</span>
+                <input required type="text" placeholder="Ммоль/л" id="form-clycemia" name="glycemia">
             </div>
             <div class="form-item">
-                <span class="form-title">Хлебные единицы</span>
-                <input type="text" placeholder="ХЕ" id="form-XE" name="bu">
+                <span class="form-title">Хлебные единицы*</span>
+                <input required type="text" placeholder="ХЕ" id="form-XE" name="bu">
             </div>
         </div>
         <div class="form-item" id="GI-input-fields">
@@ -42,7 +42,7 @@
                         </svg>
                 </button>
             </div>
-            <input type="text" placeholder="Число" class="form-GI" id ="form-GI">
+            <input required type="text" placeholder="Число" class="form-GI" id ="form-GI">
         </div>
         <input type="hidden" id="avg-gi">
         <input type="hidden" id="avg-rcg">

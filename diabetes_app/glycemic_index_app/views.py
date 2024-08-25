@@ -24,20 +24,24 @@ class NoteModelListView(APIView):
         except Note.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
 
+@login_required(login_url='glycemic_index_app:login')
 def index(request):
-    notes = Note.objects.all()
+    notes = Note.objects.filter(user=request.user)
     context = {'notes': notes, 'title': 'Список записей', 'name': 'main'}
     return render(request, 'glycemic_index_app/components/main.html', context=context)
 
+@login_required(login_url='glycemic_index_app:login')
 def detail(request, pk):
     notes = get_object_or_404(Note, pk=pk)
     context = {'notes': notes, 'list': notes.glycemic_index.split(","), 'title': 'Запись', 'name': 'detail'}
     return render(request, 'glycemic_index_app/components/detail.html', context=context)
 
+@login_required(login_url='glycemic_index_app:login')
 def add(request):
     context = {'title': 'Добавить запись', 'name': 'add'}
     return render(request, 'glycemic_index_app/components/add.html', context=context)
 
+@login_required(login_url='glycemic_index_app:login')
 def stat(request):
     context = {'title': 'Статистика', 'name': 'stat'}
     return render(request, 'glycemic_index_app/components/stat.html', context=context)
@@ -60,10 +64,12 @@ def logout_view(request):
     logout(request)
     return redirect('glycemic_index_app:main')
 
+@login_required(login_url='glycemic_index_app:login')
 def personal_data(request):
     context = {'title': 'Личные данные', 'name': 'personal_data'}
     return render(request, 'glycemic_index_app/components/personal_data.html', context=context)
 
+@login_required(login_url='glycemic_index_app:login')
 def setts(request):
     context = {'title': 'Настройки', 'name': 'settings'}
     return render(request, 'glycemic_index_app/components/settings.html', context=context)
