@@ -12,8 +12,10 @@ from .serializers import NoteSerializer
 from django.contrib.auth.decorators import login_required
 
 from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth import login, authenticate, logout, get_user_model
 from django.shortcuts import render, redirect
+
+from .forms import NoteForm
 
 class NoteModelListView(APIView):
     def get(self, request, pk):
@@ -38,7 +40,16 @@ def detail(request, pk):
 
 @login_required(login_url='glycemic_index_app:login')
 def add(request):
-    context = {'title': 'Добавить запись', 'name': 'add'}
+    if request.method == 'POST':
+        form = NoteForm(request.POST)
+        if form.is_valid():
+            note = form.save(commit=False)  # Сначала не сохраняем в базу данных
+            note.user = request.user  # Назначаем текущего пользователя
+            note.save()  # Сохраняем объект в базу данных
+            return redirect('glycemic_index_app:main')  # замените на ваш путь
+    else:
+        form = NoteForm()
+    context = {'title': 'Добавить запись', 'name': 'add', 'form': form}
     return render(request, 'glycemic_index_app/components/add.html', context=context)
 
 @login_required(login_url='glycemic_index_app:login')
