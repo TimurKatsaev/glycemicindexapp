@@ -14,15 +14,14 @@
 <div class="main-inner">
     <span class="main-title">Общий список > {{ notes.title }}</span>
     <div class="main-note">
-        <form action="" id="add-form">
-            <input class="detail-input title-input" type="text" name="title" value="{{ notes.title }}">
+        <form action="" id="add-form" method="post">
+            {% csrf_token %}
+            {{ form.title }}
             <div class="note-date">{{ notes.created_at }}</div>
-            <textarea class="detail-input main-desc" name="desc" id="">{{ notes.content }}</textarea>
+            {{ form.content }}
             <div class="note-flex">
-                <span class="note-glycemia"><b>Гликемия:</b> <input class="detail-glycemia detail-input" type="text"
-                        name="glycemia" value="{{ notes.glycemia }}"></span>
-                <span class="note-xe"><b>ХЕ:</b> <input class="detail-glycemia detail-input" type="text"
-                        name="bread_units" value="{{ notes.bread_units }}"></span>
+                <span class="note-glycemia"><b>Гликемия:</b> {{ form.glycemia }}</span>
+                <span class="note-xe"><b>ХЕ:</b> {{ form.bread_units }}</span>
             </div>
             <div class="note-GI">
                 <div class="note-GI-title">
@@ -56,9 +55,10 @@
                 </div>
             </div>
             <div id="curve_chart" style="max-width: 100%;"></div>
-            <input type="hidden" id="avg-gi">
-            <input type="hidden" id="avg-rcg">
-            <input type="hidden" id="actual-gi">
+            {{ form.glycemic_index }}
+            {{ form.general_gi }}
+            {{ form.general_rcg }}
+            {{ form.graph }}
             <button class="note-button" type="submit">Сохранить</button>
         </form>
     </div>

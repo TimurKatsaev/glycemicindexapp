@@ -59,8 +59,51 @@ class NoteForm(forms.ModelForm):
                 'id': 'graph',
             }),
         }
-    # glycemic_index = forms.CharField(required=False)
-    # general_gi = forms.CharField(required=False)
-    # general_rcg = forms.CharField(required=False)
-    # graph = forms.CharField(required=False)
-    # user = forms.CharField(required=False)
+
+class EditingForm(forms.ModelForm):
+    class Meta:
+        model = Note
+        fields = ['title', 'content', 'glycemia', 'bread_units', 'glycemic_index', 'general_gi', 'general_rcg', 'graph']
+        widgets = {
+            'title': forms.TextInput(attrs={
+                'class': 'detail-input title-input',
+                'placeholder': 'Название записи',
+                'name': 'title',
+                'type': 'text',
+                'required': ''
+            }),
+            'content': forms.Textarea(attrs={
+                'class': 'detail-input main-desc',
+                'placeholder': 'Описание',
+                'name': 'desc',
+                'required': ''
+            }),
+            'glycemia': forms.TextInput(attrs={
+                'class': 'detail-glycemia detail-input',
+                'id': 'form-glycemia',
+                'placeholder': 'Ммоль/л',
+                'name': 'glycemia',
+                'type': 'text',
+                'required': ''
+            }),
+            'bread_units': forms.TextInput(attrs={
+                'class': 'detail-glycemia detail-input',
+                'placeholder': 'ХЕ',
+                'id': 'form-XE',
+                'name': 'bread_units',
+                'type': 'text',
+                'required': ''
+            }),
+            'glycemic_index': forms.HiddenInput(attrs={
+                'id': 'actual-gi',
+            }),
+            'general_gi': forms.HiddenInput(attrs={
+                'id': 'avg-gi',
+            }),
+            'general_rcg': forms.HiddenInput(attrs={
+                'id': 'avg-rcg',
+            }),
+            'graph': forms.HiddenInput(attrs={
+                'id': 'graph',
+            }),
+        }

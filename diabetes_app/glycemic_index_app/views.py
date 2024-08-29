@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render
 
 from .models import CustomUser, Note, Statistics
-from .forms import SignUpForm
+from .forms import SignUpForm, EditingForm
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -35,7 +35,14 @@ def index(request):
 @login_required(login_url='glycemic_index_app:login')
 def detail(request, pk):
     notes = get_object_or_404(Note, pk=pk)
-    context = {'notes': notes, 'list': notes.glycemic_index.split(","), 'title': 'Запись', 'name': 'detail'}
+    if request.method == 'POST':
+        form = EditingForm(request.POST, instance=notes)
+        if form.is_valid():
+            form.save()
+            return redirect('glycemic_index_app:main')  # перенаправление на страницу с записью после сохранения
+    else:
+        form = EditingForm(instance=notes)
+    context = {'notes': notes, 'list': notes.glycemic_index.split(","), 'title': 'Запись', 'name': 'detail', 'form': form}
     return render(request, 'glycemic_index_app/components/detail.html', context=context)
 
 @login_required(login_url='glycemic_index_app:login')

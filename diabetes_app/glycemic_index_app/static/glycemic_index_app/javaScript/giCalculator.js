@@ -5,7 +5,7 @@ form.addEventListener('submit', function (event) {
 
     let giInputList = []
     const giInputs = document.getElementsByClassName("form-GI");
-    const glycemia = document.getElementById("form-clycemia").value;
+    const glycemia = document.getElementById("form-glycemia").value;
     const bread_units = document.getElementById("form-XE").value;
     const time_in = 10; // На самом деле это должно определяться по БД пользователя
     const bu_index = 2; // На самом деле это должно определяться по БД пользователя
@@ -40,7 +40,10 @@ form.addEventListener('submit', function (event) {
     }
 
     for (let i = 1; i <= 5; i++) {
-        graph +=(`${minutes+absorption_time+i},${parseFloat(glycemia)+parseFloat(avgRsg)*absorption_time}|`)
+        graph +=(`${minutes+absorption_time+i},${parseFloat(glycemia)+parseFloat(avgRsg)*absorption_time}|`);
+        if (i == 5){
+            graph +=(`${minutes+absorption_time+i},${parseFloat(glycemia)+parseFloat(avgRsg)*absorption_time}`);
+        }
     }
 
     // Заполняем результат графика в отдельное поле
