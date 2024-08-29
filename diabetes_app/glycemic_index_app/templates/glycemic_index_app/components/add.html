@@ -38,10 +38,9 @@
             {{ form.errors }}
         </div>
         {% endif %} -->
-        <div class="form-item" id="GI-input-fields">
+        <div class="form-item" id="note-GI-list">
             <div style="display: flex;">
-                <span class="form-title">ГИ продукта(-ов)* <span style="color: var(--color-bg-200)">Вводить через
-                        пробелы, без запятых</span></span>
+                <span class="form-title">ГИ продукта(-ов)*</span>
                 <button class="form-add-button" onclick="addFn()" type="button">
                     <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <circle cx="10.5" cy="10.5" r="10" stroke="var(--color-text)" />
@@ -51,7 +50,7 @@
                     </svg>
                 </button>
             </div>
-            <input required type="text" placeholder="Число" class="form-GI" id="form-GI">
+            <input required type="number" min="0" max="150" placeholder="Число" class="form-GI" id="form-GI">
         </div>
         {{ form.glycemic_index }}
         {{ form.general_gi }}
@@ -69,12 +68,17 @@
         </div> -->
         <button class="form-button" type="submit">Добавить</button>
     </form>
-    <div style="margin-top: 30px;">Если поля “Гликемия” и “Хлебные единицы” не будут заполнены, то невозможно
-        будет создать график</div>
+    <div class="messages">
+        {% for field in form %}
+            {% if field.errors %}
+                <div class="message">{{ field.label }}: {{ field.errors|striptags }}</div>
+            {% endif %}
+    {% endfor %}
+    </div>
 </div>
 {% endblock %}
 
 {% block scripts %}
 <script src="{% static 'glycemic_index_app/javaScript/giCalculator.js' %}"></script>
-<script src="{% static 'glycemic_index_app/javaScript/addButtonAddPage.js' %}"></script>
+<script src="{% static 'glycemic_index_app/javaScript/giAddButton.js' %}"></script>
 {% endblock %}

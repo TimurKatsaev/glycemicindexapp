@@ -13,9 +13,9 @@
     <div class="main-list">
         {% for item in notes %}
             <div class="card">
-                <h1>{{ item.title }}</h1>
+                <h1 class="card-title">{{ item.title }}</h1>
                 <div class="card-date-list">
-                    <span class="card-date">{{ item.created_at }}</span>
+                    <span class="card-date">{{ item.created_at|date:"d.m.Y, H:i" }}</span>
                 </div>
                 <p>{{ item.content|slice:":100" }}{% if item.content|length > 100 %}...{% endif %}</p>
                 <div class="card-info-list">

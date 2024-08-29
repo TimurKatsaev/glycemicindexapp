@@ -11,7 +11,7 @@
 {% endblock %}
 
 {% block main %}
-    <div class="main-list">
+<div class="main-list">
     <div class="main-item active" onclick="itemClick(this)">
         <div class="main-item-title">
             <span>Средняя гликемия</span>
@@ -21,7 +21,7 @@
                     fill="var(--color-text)" fill-opacity="0.5" />
             </svg>
         </div>
-        <div class="main-item-value">6.2 ммоль/л</div>
+        <div class="main-item-value">{{ glycemia__avg }} ммоль/л</div>
     </div>
     <div class="main-item" onclick="itemClick(this)">
         <div class="main-item-title">
@@ -32,7 +32,7 @@
                     fill="var(--color-text)" fill-opacity="0.5" />
             </svg>
         </div>
-        <div class="main-item-value">8 ХЕ</div>
+        <div class="main-item-value">{{ bread_units__avg }} ХЕ</div>
     </div>
     <div class="main-item" onclick="itemClick(this)">
         <div class="main-item-title">
@@ -43,7 +43,7 @@
                     fill="var(--color-text)" fill-opacity="0.5" />
             </svg>
         </div>
-        <div class="main-item-value">50</div>
+        <div class="main-item-value"> {{ general_gi__avg }} </div>
     </div>
     <div class="main-item" onclick="itemClick(this)">
         <div class="main-item-title">
@@ -54,15 +54,15 @@
                     fill="var(--color-text)" fill-opacity="0.5" />
             </svg>
         </div>
-        <div class="main-item-value">0.098</div>
+        <div class="main-item-value">{{ general_rcg__avg }} </div>
     </div>
-    </div>
-    <div class="main-graph">
+</div>
+<div class="main-graph">
     <div class="main-graph-title">Средняя гликемия за неделю</div>
     <div id="curve_chart"></div>
-    </div>
+</div>
 {% endblock %}
 
 {% block scripts %}
-    <script type="text/javascript" src="{% static 'glycemic_index_app/javaScript/app.js' %}"></script>
+<script type="text/javascript" src="{% static 'glycemic_index_app/javaScript/statPageAPI.js' %}"></script>
 {% endblock %}

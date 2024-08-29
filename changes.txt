@@ -1,0 +1,6 @@
+added stat cards
+Little changes in main and stat card style
+Added validation for num inputs
+Chaged settings about timezone, language etc
+Chaged the way date shows
+Cleaned js code

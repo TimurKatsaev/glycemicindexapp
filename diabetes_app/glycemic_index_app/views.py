@@ -10,6 +10,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from .serializers import NoteSerializer
 from django.contrib.auth.decorators import login_required
+from django.db.models import Avg
 
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate, logout, get_user_model
@@ -61,7 +62,17 @@ def add(request):
 
 @login_required(login_url='glycemic_index_app:login')
 def stat(request):
-    context = {'title': 'Статистика', 'name': 'stat'}
+    user = request.user
+    glycemia_average = Note.objects.filter(user=user).aggregate(Avg('glycemia'))['glycemia__avg']
+    bu__average = Note.objects.filter(user=user).aggregate(Avg('bread_units'))['bread_units__avg']
+    gi_average = Note.objects.filter(user=user).aggregate(Avg('general_gi'))['general_gi__avg']
+    rcg_average = Note.objects.filter(user=user).aggregate(Avg('general_rcg'))['general_rcg__avg']
+    context = {'title': 'Статистика', 
+               'name': 'stat', 
+               'glycemia__avg': glycemia_average, 
+               'bread_units__avg': bu__average, 
+               'general_gi__avg': gi_average, 
+               'general_rcg__avg': rcg_average,}
     return render(request, 'glycemic_index_app/components/stat.html', context=context)
 
 def login_view(request):

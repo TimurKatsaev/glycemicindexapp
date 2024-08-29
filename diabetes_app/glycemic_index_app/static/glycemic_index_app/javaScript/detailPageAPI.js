@@ -1,12 +1,8 @@
 google.charts.load('current', { 'packages': ['corechart'] });
 google.charts.setOnLoadCallback(drawChart);
 
-let styleMode = localStorage.getItem('styleMode');
-const styleToggle = document.querySelector('.theme-toggle');
-const button = document.querySelector('#theme');
 const url = window.location.href;
 const id = url[url.length-2]
-const statItems = document.getElementsByClassName('main-item');
 let arr = []
 
 function createNestedList(str) {
@@ -104,36 +100,4 @@ function getOptions(styleMode) {
       colors: ['#3366CC', '#DC3912', '#FF9900', '#109618']
     };
   }
-}
-
-function itemClick(item) {
-  for (let i = 0; i < statItems.length; i++) {
-    statItems[i].classList.remove('active');
-  }
-  item.classList.add('active');
-}
-
-const enableDarkStyle = () => {
-  document.body.classList.add('darkstyle');
-  button.classList.add('active')
-  localStorage.setItem('styleMode', 'dark');
-}
-
-const disableDarkStyle = () => {
-  document.body.classList.remove('darkstyle');
-  button.classList.remove('active')
-  localStorage.setItem('styleMode', null);
-}
-
-styleToggle.addEventListener('click', () => {
-  styleMode = localStorage.getItem('styleMode');
-  if (styleMode !== 'dark') {
-    enableDarkStyle();
-  } else {
-    disableDarkStyle();
-  }
-});
-
-if (styleMode === 'dark') {
-  enableDarkStyle();
 }

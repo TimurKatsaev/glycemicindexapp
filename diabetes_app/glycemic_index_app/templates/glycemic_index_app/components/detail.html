@@ -17,7 +17,7 @@
         <form action="" id="add-form" method="post">
             {% csrf_token %}
             {{ form.title }}
-            <div class="note-date">{{ notes.created_at }}</div>
+            <div class="note-date">{{ notes.created_at|date:"d.m.Y, H:i" }}</div>
             {{ form.content }}
             <div class="note-flex">
                 <span class="note-glycemia"><b>Гликемия:</b> {{ form.glycemia }}</span>
@@ -38,7 +38,7 @@
                 <div class="note-GI-list" id="note-GI-list">
                     {% for item in list %}
                         <div class="form-GI-wrapper">
-                            <input type="text" name="glycemic-index" class="form-GI" value="{{ item }}">
+                            <input type="number" min="0" max="150" name="glycemic-index" class="form-GI" value="{{ item }}">
                             <button class="minus-button" onclick="delNode(this)" type="button"></button>
                         </div>
                     {% endfor %}
@@ -66,7 +66,7 @@
 {% endblock %}
 
 {% block scripts %}
-<script src="{% static 'glycemic_index_app/javaScript/addButtonNotePage.js' %}"></script>
+<script src="{% static 'glycemic_index_app/javaScript/giAddButton.js' %}"></script>
 <script src="{% static 'glycemic_index_app/javaScript/giCalculator.js' %}"></script>
-<script src="{% static 'glycemic_index_app/javaScript/app.js' %}"></script>
+<script src="{% static 'glycemic_index_app/javaScript/detailPageAPI.js' %}"></script>
 {% endblock %}

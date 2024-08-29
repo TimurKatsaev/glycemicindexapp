@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 from .models import Note
 
@@ -33,18 +34,22 @@ class NoteForm(forms.ModelForm):
                 'required': ''
             }),
             'glycemia': forms.TextInput(attrs={
-                'id': 'form-clycemia',
+                'id': 'form-glycemia',
                 'placeholder': 'Ммоль/л',
                 'name': 'glycemia',
-                'type': 'text',
-                'required': ''
+                'type': 'number',
+                'required': '',
+                'min': '1',
+                'max': '25',
+                'step': '0.01'
             }),
             'bread_units': forms.TextInput(attrs={
                 'id': 'form-XE',
                 'placeholder': 'ХЕ',
                 'name': 'bu',
-                'type': 'text',
-                'required': ''
+                'type': 'number',
+                'required': '',
+                'step': '0.01'
             }),
             'glycemic_index': forms.HiddenInput(attrs={
                 'id': 'actual-gi',
@@ -83,16 +88,20 @@ class EditingForm(forms.ModelForm):
                 'id': 'form-glycemia',
                 'placeholder': 'Ммоль/л',
                 'name': 'glycemia',
-                'type': 'text',
-                'required': ''
+                'type': 'number',
+                'required': '',
+                'min': '1',
+                'max': '25',
+                'step': '0.01'
             }),
             'bread_units': forms.TextInput(attrs={
                 'class': 'detail-glycemia detail-input',
                 'placeholder': 'ХЕ',
                 'id': 'form-XE',
                 'name': 'bread_units',
-                'type': 'text',
-                'required': ''
+                'type': 'number',
+                'required': '',
+                'step': '0.01'
             }),
             'glycemic_index': forms.HiddenInput(attrs={
                 'id': 'actual-gi',
