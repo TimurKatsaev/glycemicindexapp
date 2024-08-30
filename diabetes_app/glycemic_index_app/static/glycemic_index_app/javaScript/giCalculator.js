@@ -40,9 +40,9 @@ form.addEventListener('submit', function (event) {
     }
 
     for (let i = 1; i <= 5; i++) {
-        graph +=(`${minutes+absorption_time+i},${parseFloat(glycemia)+parseFloat(avgRsg)*absorption_time}|`);
+        graph +=(`${minutes+parseInt(absorption_time)+i},${parseFloat(glycemia)+parseFloat(avgRsg)*absorption_time}|`);
         if (i == 5){
-            graph +=(`${minutes+absorption_time+i},${parseFloat(glycemia)+parseFloat(avgRsg)*absorption_time}`);
+            graph +=(`${minutes+parseInt(absorption_time)+i},${parseFloat(glycemia)+parseFloat(avgRsg)*absorption_time}`);
         }
     }
 

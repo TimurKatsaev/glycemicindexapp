@@ -12,7 +12,7 @@
 
 {% block main %}
 <div class="main-list">
-    <div class="main-item active" onclick="itemClick(this)">
+    <div class="main-item active" name="glycemia" id="glycemia" onclick="itemClick(this)">
         <div class="main-item-title">
             <span>Средняя гликемия</span>
             <svg width="12" height="14" viewBox="0 0 12 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -23,7 +23,7 @@
         </div>
         <div class="main-item-value">{{ glycemia__avg }} ммоль/л</div>
     </div>
-    <div class="main-item" onclick="itemClick(this)">
+    <div class="main-item" name="bread_units" id="bread_units" onclick="itemClick(this)">
         <div class="main-item-title">
             <span>Среднее кол-во ХЕ</span>
             <svg width="12" height="14" viewBox="0 0 12 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -34,7 +34,7 @@
         </div>
         <div class="main-item-value">{{ bread_units__avg }} ХЕ</div>
     </div>
-    <div class="main-item" onclick="itemClick(this)">
+    <div class="main-item" name="glycemic_index" id="glycemic_index" onclick="itemClick(this)">
         <div class="main-item-title">
             <span>Среднее ГИ</span>
             <svg width="12" height="14" viewBox="0 0 12 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -45,7 +45,7 @@
         </div>
         <div class="main-item-value"> {{ general_gi__avg }} </div>
     </div>
-    <div class="main-item" onclick="itemClick(this)">
+    <div class="main-item" name="rsg" id="rsg" onclick="itemClick(this)">
         <div class="main-item-title">
             <span>Среднее значение СИГ</span>
             <svg width="12" height="14" viewBox="0 0 12 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -64,5 +64,6 @@
 {% endblock %}
 
 {% block scripts %}
+<!-- <script type="text/javascript" src="{% static 'glycemic_index_app/javaScript/statPageCards.js' %}"></script> -->
 <script type="text/javascript" src="{% static 'glycemic_index_app/javaScript/statPageAPI.js' %}"></script>
 {% endblock %}

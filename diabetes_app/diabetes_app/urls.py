@@ -27,7 +27,8 @@ app_name = 'glycemic_index_app'
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('gi-webapp/', include(('glycemic_index_app.urls', 'glycemic_index_app'), namespace="glycemic_index_app")),
-    path('api/notemodel/<int:pk>/', NoteModelListView.as_view(), name='note-detail'),
+    path('api/notemodel/<int:pk>/', NoteModelDetailView.as_view(), name='note-detail'),
+    path('api/get-table-data/', NoteModelListView.as_view(), name='note-list'),
 ]
 
 if settings.DEBUG:

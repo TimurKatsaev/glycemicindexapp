@@ -1,5 +1,5 @@
 from pyexpat.errors import messages
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import get_object_or_404, render
 
 from .models import CustomUser, Note, Statistics
@@ -18,12 +18,21 @@ from django.shortcuts import render, redirect
 
 from .forms import NoteForm
 
-class NoteModelListView(APIView):
+class NoteModelDetailView(APIView):
     def get(self, request, pk):
         try:
             item = Note.objects.get(pk=pk)
             serializer = NoteSerializer(item)
             return Response(serializer.data)
+        except Note.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+        
+class NoteModelListView(APIView):
+    def get(self, request):
+        try:
+            user = request.user  # Получаем текущего пользователя
+            data = list(Note.objects.filter(user=user).values())  # Получить все данные как словарь
+            return JsonResponse(data, safe=False)
         except Note.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
 

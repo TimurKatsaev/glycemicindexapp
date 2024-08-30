@@ -1,8 +1,11 @@
 google.charts.load('current', { 'packages': ['corechart'] });
 google.charts.setOnLoadCallback(drawChart);
 
-const url = window.location.href;
-const id = url[url.length-2]
+// Получаем путь из URL
+const path = window.location.pathname;
+const segments = path.split('/');
+const id = segments[segments.length - 2];
+
 let arr = []
 
 function createNestedList(str) {
@@ -11,6 +14,7 @@ function createNestedList(str) {
   let nestedList = topLevelItems.map(item => {
       // Разбиваем каждый элемент верхнего уровня по ","
       let subItems = item.split(',');
+      // console.log(subItems)
       // Очищаем пробелы
       return subItems.map(subItem => parseFloat(subItem.trim()));
   });
