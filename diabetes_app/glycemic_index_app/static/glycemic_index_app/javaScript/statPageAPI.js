@@ -11,6 +11,7 @@ const glycemiaCard = document.getElementById('glycemia');
 fetch('/api/get-table-data/')
 .then(response => response.json())
 .then(data => {
+    data = data.reverse();
     data.forEach((item, i, data) => {
         avgGlycemia.push([i + 1, data[i].glycemia])
         avgBU.push([i + 1, data[i].bread_units])

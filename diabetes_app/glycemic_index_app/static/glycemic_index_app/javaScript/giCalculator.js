@@ -3,25 +3,42 @@ const form = document.getElementById('add-form');
 form.addEventListener('submit', function (event) {
     event.preventDefault(); // Предотвращаем стандартное действие отправки формы
 
+    // Глобальные переменные
     let giInputList = []
+    let graph = ''
+    // Данные с формы
     const giInputs = document.getElementsByClassName("form-GI");
     const glycemia = document.getElementById("form-glycemia").value;
     const bread_units = document.getElementById("form-XE").value;
-    const time_in = 10; // На самом деле это должно определяться по БД пользователя
-    const bu_index = 2; // На самом деле это должно определяться по БД пользователя
-    let graph = ''
+    
+    // Данные пользователя
+    let user_rcg = document.getElementById("user_rcg").value.split('|');
+    let user_timeIn = document.getElementById("user_timeIn").value.split('|');
+    const bu_index = document.getElementById("user_buIndex").value;
     
     // Добавляем ГИ с инпутов в список
     Array.prototype.forEach.call(giInputs, el => {
         giInputList.push(el.value);
     })
+
+    // Делает перерасчёт ГИ на СИГ и ГИ на время всасывания на основе пользовательских данных. 
+    // El - пользовательские данные СИГ или время всасывания 
+    function UserDataCalc(avgGlycemicIndex, el){
+        avgGlycemicIndex = Math.round(avgGlycemicIndex/10);
+        if (avgGlycemicIndex >= 1){
+            return parseFloat(el[avgGlycemicIndex-1])
+        } else{
+            return parseFloat(el[0])
+        }
+    }
     
     // Выполняем вычисления
     const sum = giInputList.reduce((a, b) => parseInt(a) + parseInt(b), 0);
     const avgGi = (sum / giInputList.length) || 0;
-    const avgRsg = avgGi / 1000; // На самом деле это должно определяться по БД пользователя
+    const avgRsg = UserDataCalc(avgGi, user_rcg);
+    const time_in = UserDataCalc(avgGi, user_timeIn);
     const absorption_time = (bread_units*bu_index*1000)/avgGi
-
+    
     // Заполняем результат в отдельное поле
     document.getElementById('avg-gi').value = avgGi;
     document.getElementById('avg-rcg').value = avgRsg; // На самом деле это должно определяться по БД пользователя
@@ -29,7 +46,7 @@ form.addEventListener('submit', function (event) {
 
     // Вычисляем график
 
-    let minutes = time_in
+    let minutes = parseFloat(time_in)
 
     for (let i = 1; i <= time_in; i++) {
         graph += (`${i},${glycemia}|`)

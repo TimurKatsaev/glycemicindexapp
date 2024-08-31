@@ -59,6 +59,9 @@
             {{ form.general_gi }}
             {{ form.general_rcg }}
             {{ form.graph }}
+            <input type="hidden" id="user_rcg" value="{{ user.rcg }}">
+            <input type="hidden" id="user_timeIn" value="{{ user.absorption_time }}">
+            <input type="hidden" id="user_buIndex" value="{{ user.bu_index }}">
             <div class="buttons">
                 <button class="note-button" type="submit">Сохранить</button>
                 <button id="openModalBtn" type="button">Удалить</button>

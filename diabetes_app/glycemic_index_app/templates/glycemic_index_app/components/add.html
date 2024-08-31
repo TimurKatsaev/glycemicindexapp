@@ -56,6 +56,9 @@
         {{ form.general_gi }}
         {{ form.general_rcg }}
         {{ form.graph }}
+        <input type="hidden" id="user_rcg" value="{{ user.rcg }}">
+        <input type="hidden" id="user_timeIn" value="{{ user.absorption_time }}">
+        <input type="hidden" id="user_buIndex" value="{{ user.bu_index }}">
         <!-- <div class="conclusion-info">
             <div class="conclusion-line">
                 <span class="conclusion-title">Общий ГИ:</span>
@@ -70,10 +73,10 @@
     </form>
     <div class="messages">
         {% for field in form %}
-            {% if field.errors %}
-                <div class="message">{{ field.label }}: {{ field.errors|striptags }}</div>
-            {% endif %}
-    {% endfor %}
+        {% if field.errors %}
+        <div class="message">{{ field.label }}: {{ field.errors|striptags }}</div>
+        {% endif %}
+        {% endfor %}
     </div>
 </div>
 {% endblock %}

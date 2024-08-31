@@ -2,6 +2,10 @@
     max-width: 350px;
 }
 
+.form-title{
+    width: 200px;
+}
+
 .main-inner-title{
     margin: 25px 0;
 }

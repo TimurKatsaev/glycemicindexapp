@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
 from django.core.validators import MinValueValidator, MaxValueValidator
 
-from .models import Note
+from .models import Note, CustomUser
 
 class SignUpForm(UserCreationForm):
     email = forms.EmailField(required=True)
@@ -114,5 +114,32 @@ class EditingForm(forms.ModelForm):
             }),
             'graph': forms.HiddenInput(attrs={
                 'id': 'graph',
+            }),
+        }
+
+class UserEditingForm(forms.ModelForm):
+    class Meta:
+        model = CustomUser
+        fields = ['rcg', 'absorption_time', 'bu_index']
+        widgets = {
+            'bu_index': forms.TextInput(attrs={
+                'id': 'bu-index',
+                'placeholder': 'ммоль/л',
+                'name': 'bu_index',
+                'type': 'number',
+                'required': '',
+                'min': '0.1',
+                'max': '5',
+                'step': '0.001'
+            }),
+            'rcg': forms.HiddenInput(attrs={
+                'id': 'general-rcg',
+                'name': 'general-rcg',
+                'required': '',
+            }),
+            'absorption_time': forms.HiddenInput(attrs={
+                'id': 'general-timein',
+                'name': 'general-timein',
+                'required': '',
             }),
         }

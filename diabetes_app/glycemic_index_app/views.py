@@ -2,8 +2,8 @@ from pyexpat.errors import messages
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import get_object_or_404, render
 
-from .models import CustomUser, Note, Statistics
-from .forms import SignUpForm, EditingForm
+from .models import CustomUser, Note
+from .forms import SignUpForm, EditingForm, UserEditingForm
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -110,7 +110,19 @@ def logout_view(request):
 
 @login_required(login_url='glycemic_index_app:login')
 def personal_data(request):
-    context = {'title': 'Личные данные', 'name': 'personal_data'}
+    user = request.user
+    rcg = user.rcg.split("|")
+    abcTime = user.absorption_time.split("|")
+    combined_array = list(zip(rcg, abcTime))
+
+    if request.method == 'POST':
+        user_form = UserEditingForm(request.POST, instance=user)
+        if user_form.is_valid():
+            user_form.save()
+            return redirect('glycemic_index_app:main')
+    else:
+        user_form = UserEditingForm(instance=user)
+    context = {'title': 'Личные данные', 'name': 'personal_data', 'form': user_form, 'rcgTimeIn': combined_array}
     return render(request, 'glycemic_index_app/components/personal_data.html', context=context)
 
 @login_required(login_url='glycemic_index_app:login')
