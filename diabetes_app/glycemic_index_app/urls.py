@@ -13,4 +13,5 @@ urlpatterns = [
     path('settings/', setts, name='setts'),
     path('signup/', signup, name='signup'),
     path('logout/', logout_view, name='logout'),
+    path('delete/<int:pk>/', delete_record, name='delete_record'),
 ]

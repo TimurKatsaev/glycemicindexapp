@@ -15,6 +15,7 @@ from django.db.models import Avg
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate, logout, get_user_model
 from django.shortcuts import render, redirect
+from django.urls import reverse
 
 from .forms import NoteForm
 
@@ -54,6 +55,11 @@ def detail(request, pk):
         form = EditingForm(instance=notes)
     context = {'notes': notes, 'list': notes.glycemic_index.split(","), 'title': 'Запись', 'name': 'detail', 'form': form}
     return render(request, 'glycemic_index_app/components/detail.html', context=context)
+
+def delete_record(request, pk):
+    record = get_object_or_404(Note, pk=pk)
+    record.delete()
+    return redirect(reverse('glycemic_index_app:main'))
 
 @login_required(login_url='glycemic_index_app:login')
 def add(request):

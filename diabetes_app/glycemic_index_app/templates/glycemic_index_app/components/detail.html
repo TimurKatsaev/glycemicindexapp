@@ -22,7 +22,7 @@
             <div class="note-flex">
                 <span class="note-glycemia"><b>Гликемия:</b> {{ form.glycemia }}</span>
                 <span class="note-xe"><b>ХЕ:</b> {{ form.bread_units }}</span>
-            </div>
+            </div>  
             <div class="note-GI">
                 <div class="note-GI-title">
                     <h3>ГИ продуктов</h3>
@@ -59,8 +59,22 @@
             {{ form.general_gi }}
             {{ form.general_rcg }}
             {{ form.graph }}
-            <button class="note-button" type="submit">Сохранить</button>
+            <div class="buttons">
+                <button class="note-button" type="submit">Сохранить</button>
+                <button id="openModalBtn" type="button">Удалить</button>
+            </div>
         </form>
+        <div id="myModal" class="modal">
+
+            <!-- Контент модального окна -->
+            <div class="modal-content">
+                <h2>Вы уверены что хотите удалить запись?</h2>
+                <p>После удаления запись будет невозозможно восстановить.</p>
+                <a href="{% url 'glycemic_index_app:delete_record' notes.pk %}" class="delete-button">Удалить</a>
+                <button class="cancel-button close">Отмена</button>
+            </div>
+    
+        </div>
     </div>
 </div>
 {% endblock %}
@@ -69,4 +83,5 @@
 <script src="{% static 'glycemic_index_app/javaScript/giAddButton.js' %}"></script>
 <script src="{% static 'glycemic_index_app/javaScript/giCalculator.js' %}"></script>
 <script src="{% static 'glycemic_index_app/javaScript/detailPageAPI.js' %}"></script>
+<script src="{% static 'glycemic_index_app/javaScript/modalWindow.js' %}"></script>
 {% endblock %}

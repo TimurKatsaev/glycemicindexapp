@@ -141,6 +141,48 @@ textarea {
     margin-left: 15px;
 }
 
+.buttons{
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.delete-button{
+    color: #dd473b;
+    padding: 7px 15px;
+    border: 2px solid #dd473b;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: all linear .1s;
+}
+
+.delete-button:hover{
+    color: var(--color-text);
+    background-color: #dd473b;
+}
+
+.cancel-button{
+    color: var(--color-text);
+    padding: 7px 15px;
+    border: 2px solid var(--color-text);
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 8px;
+    margin-left: 10px;
+}
+
+#openModalBtn{
+    color: #dd473b;
+    margin-left: 10px;
+    border: 2px solid #dd473b;
+}
+
+#openModalBtn:hover{
+    color: var(--color-text);
+    background-color: #dd473b;
+}
+
 .note-add-button:hover {
     background-color: transparent;
 }
@@ -168,13 +210,55 @@ textarea {
     margin-top: 35px;
 }
 
-.note-button {
-    margin-top: 30px;
-}
-
 .note-GI-title {
     display: flex;
     align-items: center;
+}
+
+/* Modal window */
+
+/* Стили для модального окна */
+.modal {
+    display: none; /* Скрыто по умолчанию */
+    position: fixed; /* Фиксированное положение */
+    z-index: 1; /* Поверх всех элементов */
+    left: 0;
+    top: 0;
+    width: 100%; /* Полная ширина */
+    height: 100%; /* Полная высота */
+    overflow: auto; /* Включить прокрутку, если нужно */
+    background-color: rgba(0, 0, 0, 0.5); /* Фон с затемнением */
+}
+
+/* Стили для контента модального окна */
+.modal-content {
+    color: var(--color-text);
+    background-color: var(--color-bg-100);
+    margin: 15% auto; /* 15% от верхнего и нижнего края экрана */
+    padding: 50px 30px;
+    width: 80%; /* Ширина модального окна */
+    max-width: 500px; /* Максимальная ширина */
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+}
+
+.modal-content p{
+    margin: 20px 0px 30px;
+}
+
+/* Кнопка подтверждения */
+#confirmBtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#confirmBtn:hover {
+    background-color: #45a049;
 }
 
 @media (max-width:425px) {
