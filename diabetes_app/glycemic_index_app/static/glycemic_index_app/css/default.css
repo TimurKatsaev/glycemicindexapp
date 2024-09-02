@@ -205,20 +205,27 @@ textarea {
     transition: all .2s linear;
 }
 
-.search-bar {
-    background-color: var(--color-input);
-    padding-left: 40px;
+.input-wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-top: 25px;
 }
 
-.search-logo {
-    position: absolute;
-    top: 50%;
-    left: 15px;
-    transform: translateY(50%);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.search-bar {
+    width: 80%;
+    background-color: var(--color-input);
+    padding-right: 40px;
+    padding-left: 20px;
+}
+
+.search-button{
+    border: 0;
+}
+
+.search-button:hover{
+    transform: translateY(-5px);
+    background-color: transparent;
 }
 
 .menu-button {

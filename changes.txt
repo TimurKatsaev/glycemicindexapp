@@ -1,2 +1,0 @@
-Setted stat page up
-Fixed bag with detail page API

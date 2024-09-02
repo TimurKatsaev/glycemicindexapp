@@ -39,8 +39,23 @@ class NoteModelListView(APIView):
 
 @login_required(login_url='glycemic_index_app:login')
 def index(request):
-    notes = Note.objects.filter(user=request.user)
-    context = {'notes': notes, 'title': 'Список записей', 'name': 'main'}
+    # Получаем поисковый запрос из GET параметров
+    query = request.GET.get('q')
+
+    # Фильтруем записи по пользователю и, если есть запрос, по заголовку
+    if query:
+        notes = Note.objects.filter(user=request.user, title__icontains=query)
+    else:
+        notes = Note.objects.filter(user=request.user)
+
+    # Подготовка контекста для шаблона
+    context = {
+        'notes': notes,
+        'title': 'Список записей',
+        'name': 'main'
+    }
+
+    # Рендеринг шаблона с контекстом
     return render(request, 'glycemic_index_app/components/main.html', context=context)
 
 @login_required(login_url='glycemic_index_app:login')

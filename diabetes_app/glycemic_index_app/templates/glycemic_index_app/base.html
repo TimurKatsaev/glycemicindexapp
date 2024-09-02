@@ -38,9 +38,11 @@
                 </svg>
             </button>
         </div>
-        <form action="#" class="search-bar-wrapper">
-            <div style="position: relative;">
-                <svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg"
+        <form action="" class="search-bar-wrapper" method="GET">
+            <div class="input-wrapper">
+                <input type="text" name="q" class="search-bar" placeholder="Поиск">
+                <button class="search-button" type="submit">
+                    <svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg"
                     class="search-logo">
                     <g clip-path="url(#clip0_4_22)">
                         <path
@@ -52,8 +54,8 @@
                             <rect width="12" height="12" fill="white" transform="translate(0 0.5)" />
                         </clipPath>
                     </defs>
-                </svg>
-                <input type="text" class="search-bar" placeholder="Поиск">
+                    </svg>
+                </button>
             </div>
         </form>
         <div class="funcs">
