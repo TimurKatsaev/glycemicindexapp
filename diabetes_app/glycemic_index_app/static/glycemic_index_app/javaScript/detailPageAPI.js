@@ -33,7 +33,22 @@ fetch('/api/notemodel/' + id + '/')
   
 function drawChart() {
   arr.unshift(['Day', 'Glycemia'])
-  var data = google.visualization.arrayToDataTable(arr);
+  var data = new google.visualization.DataTable();
+
+  // To avoid error from Google chart relateed to types of data
+  jsonData.forEach(function (row, indexRow) {
+    if (indexRow === 0) {
+      row.forEach(function (column, indexCol) {
+        if (indexCol === 0) {
+          data.addColumn('string', column);
+        } else {
+          data.addColumn('number', column);
+        }
+      });
+    } else {
+      data.addRow(row);
+    }
+  });
 
   var options = getOptions(styleMode);
 
