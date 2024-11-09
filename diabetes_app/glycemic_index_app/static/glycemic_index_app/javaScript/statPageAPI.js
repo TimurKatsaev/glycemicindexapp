@@ -1,7 +1,7 @@
 google.charts.load('current', { 'packages': ['corechart'] });
 google.charts.setOnLoadCallback(drawChart);
 
-let avgGlycemia = [['Days', 'Glycemia']]
+let avgGlycemia = []
 let avgBU = [['Days', 'Bread units']]
 let avgGI = [['Days', 'Glycemic index']]
 let avgRCG = [['Days', 'RCG']]
@@ -21,8 +21,13 @@ fetch('/api/get-table-data/')
 })
 .catch(error => console.error('Ошибка:', error));
 
+console.log(avgGlycemia)
+
 function drawChart() {
-    var data = google.visualization.arrayToDataTable(avgGlycemia);
+    var data = new google.visualization.DataTable();
+    data.addColumn('number', 'Days');
+    data.addColumn('number', 'Glycemia');
+    data.addRows(avgGlycemia);
     var options = getOptions(styleMode);
     var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
     chart.draw(data, options);

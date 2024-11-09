@@ -21,7 +21,7 @@
                     fill="var(--color-text)" fill-opacity="0.5" />
             </svg>
         </div>
-        <div class="main-item-value">{{ glycemia__avg }} ммоль/л</div>
+        <div class="main-item-value">{{ glycemia__avg|floatformat:2 }} ммоль/л</div>
     </div>
     <div class="main-item" name="bread_units" id="bread_units" onclick="itemClick(this)">
         <div class="main-item-title">
@@ -32,7 +32,7 @@
                     fill="var(--color-text)" fill-opacity="0.5" />
             </svg>
         </div>
-        <div class="main-item-value">{{ bread_units__avg }} ХЕ</div>
+        <div class="main-item-value">{{ bread_units__avg|floatformat:2 }} ХЕ</div>
     </div>
     <div class="main-item" name="glycemic_index" id="glycemic_index" onclick="itemClick(this)">
         <div class="main-item-title">
@@ -43,7 +43,7 @@
                     fill="var(--color-text)" fill-opacity="0.5" />
             </svg>
         </div>
-        <div class="main-item-value"> {{ general_gi__avg }} </div>
+        <div class="main-item-value"> {{ general_gi__avg|floatformat:2 }} </div>
     </div>
     <div class="main-item" name="rsg" id="rsg" onclick="itemClick(this)">
         <div class="main-item-title">
@@ -54,7 +54,7 @@
                     fill="var(--color-text)" fill-opacity="0.5" />
             </svg>
         </div>
-        <div class="main-item-value">{{ general_rcg__avg }} </div>
+        <div class="main-item-value">{{ general_rcg__avg|floatformat:2 }} </div>
     </div>
 </div>
 <div class="main-graph">

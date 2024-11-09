@@ -12,11 +12,11 @@ function createNestedList(str) {
   // Разбиваем строку на верхний уровень по "|"
   let topLevelItems = str.split('|');
   let nestedList = topLevelItems.map(item => {
-      // Разбиваем каждый элемент верхнего уровня по ","
-      let subItems = item.split(',');
-      // console.log(subItems)
-      // Очищаем пробелы
-      return subItems.map(subItem => parseFloat(subItem.trim()));
+    // Разбиваем каждый элемент верхнего уровня по ","
+    let subItems = item.split(',');
+    // console.log(subItems)
+    // Очищаем пробелы
+    return subItems.map(subItem => parseFloat(subItem.trim()));
   });
   return nestedList;
 }
@@ -30,25 +30,12 @@ fetch('/api/notemodel/' + id + '/')
     console.error('Error:', error);
   });
 
-  
-function drawChart() {
-  arr.unshift(['Day', 'Glycemia'])
-  var data = new google.visualization.DataTable();
 
-  // To avoid error from Google chart relateed to types of data
-  jsonData.forEach(function (row, indexRow) {
-    if (indexRow === 0) {
-      row.forEach(function (column, indexCol) {
-        if (indexCol === 0) {
-          data.addColumn('string', column);
-        } else {
-          data.addColumn('number', column);
-        }
-      });
-    } else {
-      data.addRow(row);
-    }
-  });
+function drawChart() {
+  var data = new google.visualization.DataTable();
+  data.addColumn('number', 'Day');
+  data.addColumn('number', 'Glycemia');
+  data.addRows(arr);
 
   var options = getOptions(styleMode);
 
@@ -67,7 +54,7 @@ function getOptions(styleMode) {
       backgroundColor: '#2B2A2F',
       hAxis: {
         textStyle: {
-          color: '#FFFFFF'
+          color: '#FFFFFF',
         },
         gridlines: {
           color: '#555555'
